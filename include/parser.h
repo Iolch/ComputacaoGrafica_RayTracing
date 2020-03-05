@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <fstream>
+#include <map>
 
 struct tag_object {
   std::string tag_identifier;
