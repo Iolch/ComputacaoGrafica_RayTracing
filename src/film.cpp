@@ -2,8 +2,8 @@
 #include <sstream>
 #include <fstream>
 
-void createImage(int width, int height, char * filepath){
-	std::ofstream img(filepath);
+void createImage(int width, int height, std::string file_path){
+	std::ofstream img(file_path);
 	img << "P3" << std::endl << width << " " << height << std::endl << "255" << std::endl;
 	
 	for(int j =  height-1; j>=0; j--){
