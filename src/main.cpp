@@ -8,16 +8,15 @@
 int main(int argc, char** argv){
 	int w = 200;
 	int h = 100;
-	
-	//char * filepath = argv[1]; 
-	//createImage(w, h, filepath);
 
 	char * xmlpath = argv[1];
 	if(!xmlpath){ 
 		std::cout << "Por favor, informe o caminho de um arquivo xml";
 		return -1;
 	}
-	if(readXML(xmlpath) == -1){
+	parser p{};
+
+	if(p.readXML(xmlpath) == -1){
 		std::cout << "Problemas na leitura do arquivo";
 		return -1;
 	}

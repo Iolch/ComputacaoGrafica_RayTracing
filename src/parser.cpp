@@ -1,8 +1,7 @@
 #include "../include/parser.h"
 
 
-
-int readXML(std::string file_path){
+int parser::readXML(std::string file_path) const{
 	std::ifstream file(file_path);
 	if(!file)	return -1;
 
@@ -12,7 +11,7 @@ int readXML(std::string file_path){
     }
     return 0;
 }
-tag_object readTag(std::string tag){
+void parser::readTag(std::string tag) const{
   	
   	bool found_tag_identifier = false;
   	bool found_attribute_name = false;
@@ -50,7 +49,8 @@ tag_object readTag(std::string tag){
 
 		if(c == '>'){
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
-			createObject(tag_identifier, attributes);
+			void * object = createObject(tag_identifier, attributes);
+			//addObject(tag_identifier, object);
 			tag_identifier = "";
 			attributes.clear();
 			found_tag_identifier = false;
