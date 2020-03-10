@@ -1,8 +1,8 @@
 #include "../include/parser.h"
 
-#include <fstream>
 
 
-void createObject(std::string tag_identifier, void * attributes){
 
+void createObject(std::string tag_identifier, std::map<std::string, std::string> attributes){
+    if(tag_identifier == "film") createFilm(attributes);
 }

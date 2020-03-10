@@ -1,4 +1,10 @@
 #ifndef FILMH
 #define FILMH
-void createImage(int width, int height, char * filepath);
+
+#include <map>
+#include <sstream>
+#include <fstream>
+#include <string>
+
+void createFilm(std::map<std::string, std::string> attributes);
 #endif

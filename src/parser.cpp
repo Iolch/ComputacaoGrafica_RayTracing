@@ -42,15 +42,15 @@ tag_object readTag(std::string tag){
   					temporary_attribute_name = "";
   					temporary_attribute_value = "";
 					found_attribute_name = false;
-  				}else if(c != '"' and c != '<' and c != '/' and c != '>'){
+  				}else if(c != '"' and c != '<' and c != '>' and c != '='){
   					temporary_attribute_value += c;
   				}
   			}
   		}
 
 		if(c == '>'){
-			std::cout << "tag: " << tag_identifier << std::endl;
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
+			createObject(tag_identifier, attributes);
 			tag_identifier = "";
 			attributes.clear();
 			found_tag_identifier = false;
