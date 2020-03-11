@@ -1,20 +1,16 @@
 #include "../include/parser.h"
 
 
-int readXML(std::string file_path){
+std::map<std::string, std::unique_ptr<void *>> readXML(std::string file_path){
 	std::ifstream file(file_path);
-	if(!file)	return -1;
-
-  std::map<std::string, void *> objects;
+  //if(!file) return;
+	std::map<std::string, std::unique_ptr<void *>> objects;
   std::string line;
   while (std::getline(file, line)) {
       tag_object tag = readTag(line.c_str());
-      objects[tag.tag_identifier] = tag.object;
-
-      
-      std::cout << (static_cast<film *>(&&objects["film"]))->getWidth() << std::endl;
+      objects[tag.tag_identifier] = std::move(tag.object);
   }
-  return 0;
+  return objects;
 }
 tag_object readTag(std::string tag){
   	
@@ -25,6 +21,7 @@ tag_object readTag(std::string tag){
   	std::string temporary_attribute_value;
   	std::map<std::string, std::string> attributes;
     
+    tag_object tag_obj;
 
   	for(char& c : tag) {
 		if(!found_tag_identifier){
@@ -55,18 +52,19 @@ tag_object readTag(std::string tag){
 
 		if(c == '>'){
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
-      tag_object tag;
-      tag.tag_identifier = tag_identifier;
-      tag.object = createObject(tag_identifier, attributes);
+      
+      tag_obj.tag_identifier = tag_identifier;  //SALVAMOS A KEY COMO A TAGNAME
+      tag_obj.object = std::move(createObject(tag_identifier, attributes)); //RECEBE OBJETO E ARMAZENA EM TAG.OBJECT
+      std::cout << "DENTRO DA READTAG " << *tag_obj.object << std::endl; 
+      std::cout << (static_cast<film *>(*tag_obj.object))->getWidth() <<std::endl;  //O OBJETO TÁ BUGANDO A FUNCAO, MAS A REFERENCIA ESTA CORRETA
+      
 
-      // std::cout << static_cast<film *>(createObject(tag_identifier, attributes))->getWidth() << std::endl;
-    
-      tag_identifier = "";
-			attributes.clear();
+      tag_identifier = "";	
+      attributes.clear();
 			found_tag_identifier = false;
-      return tag;
 		}
 	}
+  return tag_obj; 
 }
 
 

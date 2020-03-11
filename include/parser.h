@@ -5,13 +5,16 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <memory>
 #include "../src/paramset.cpp"
 
 struct tag_object {
   std::string tag_identifier;
-  void * object;
+  std::unique_ptr<void *> object;
+  //void * object;
 };
-int readXML(std::string file_path);
+std::map<std::string, std::unique_ptr<void *>> readXML(std::string file_path);
+//std::map<std::string, void *> readXML(std::string file_path);
 tag_object readTag(std::string tag);
 
 // class parser{

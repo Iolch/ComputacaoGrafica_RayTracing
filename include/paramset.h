@@ -4,10 +4,12 @@
 #include <map>
 #include <fstream>
 #include <string>
+#include <memory>
 #include "../src/film.cpp"
 
 class paramset{
     public:
-        void * createObject(std::string tag_identifier, std::map<std::string, std::string> attributes);
+    	std::unique_ptr<void *> createObject(std::string tag_identifier, std::map<std::string, std::string> attributes);
+        //void * createObject(std::string tag_identifier, std::map<std::string, std::string> attributes);
 };
 #endif

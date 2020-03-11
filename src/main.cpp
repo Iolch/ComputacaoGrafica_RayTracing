@@ -14,17 +14,12 @@ int main(int argc, char** argv){
 		std::cout << "Por favor, informe o caminho de um arquivo xml";
 		return -1;
 	}
-	if(readXML(xmlpath) == -1){
-		std::cout << "Problemas na leitura do arquivo";
-		return -1;
-	}
-	// parser p{};
+	std::map<std::string, std::unique_ptr<void *>> objects = readXML(xmlpath);
+	film * f = static_cast<film *>(*objects["film"]);
 
-	// if(p.readXML(xmlpath) == -1){
-	// 	std::cout << "Problemas na leitura do arquivo";
-	// 	return -1;
-	// }
-
+	
+    std::cout << "DENTRO DA MAIN " << f << std::endl; 
+	std::cout << f->getWidth() << std::endl;
 	
 	
 	return 0;
