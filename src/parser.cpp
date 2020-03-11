@@ -10,8 +10,10 @@ int readXML(std::string file_path){
   while (std::getline(file, line)) {
       tag_object tag = readTag(line.c_str());
       objects[tag.tag_identifier] = tag.object;
+
+      
+      std::cout << (static_cast<film *>(&&objects["film"]))->getWidth() << std::endl;
   }
-  std::cout << static_cast<film *>(objects["film"])->getWidth();
   return 0;
 }
 tag_object readTag(std::string tag){
@@ -53,11 +55,12 @@ tag_object readTag(std::string tag){
 
 		if(c == '>'){
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
-      
-      // tag_object tag = {tag_identifier, createObject(tag_identifier, attributes)};
-      std::cout<< "bbb"  << createObject(tag_identifier, attributes) << std::endl;
-      void * obj;
-			tag_object tag = {tag_identifier, obj};
+      tag_object tag;
+      tag.tag_identifier = tag_identifier;
+      tag.object = createObject(tag_identifier, attributes);
+
+      // std::cout << static_cast<film *>(createObject(tag_identifier, attributes))->getWidth() << std::endl;
+    
       tag_identifier = "";
 			attributes.clear();
 			found_tag_identifier = false;

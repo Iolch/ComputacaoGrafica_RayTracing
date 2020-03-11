@@ -1,3 +1,1 @@
-<RT3>
-    <film type="image" x_res="200" y_res="100" filename="build/simple_bkg.ppm" img_type="ppm" />
-</RT3>
+<film type="image" x_res="200" y_res="100" filename="build/simple_bkg.ppm" img_type="ppm" />
