@@ -1,17 +1,20 @@
 #include "../include/parser.h"
 
 
-int parser::readXML(std::string file_path) const{
+int readXML(std::string file_path){
 	std::ifstream file(file_path);
 	if(!file)	return -1;
 
-	std::string line;
-    while (std::getline(file, line)) {
-        readTag(line.c_str());
-    }
-    return 0;
+  std::map<std::string, void *> objects;
+  std::string line;
+  while (std::getline(file, line)) {
+      tag_object tag = readTag(line.c_str());
+      objects[tag.tag_identifier] = tag.object;
+  }
+  std::cout << static_cast<film *>(objects["film"])->getWidth();
+  return 0;
 }
-void parser::readTag(std::string tag) const{
+tag_object readTag(std::string tag){
   	
   	bool found_tag_identifier = false;
   	bool found_attribute_name = false;
@@ -19,6 +22,7 @@ void parser::readTag(std::string tag) const{
   	std::string temporary_attribute_name;
   	std::string temporary_attribute_value;
   	std::map<std::string, std::string> attributes;
+    
 
   	for(char& c : tag) {
 		if(!found_tag_identifier){
@@ -50,10 +54,11 @@ void parser::readTag(std::string tag) const{
 		if(c == '>'){
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
 			void * object = createObject(tag_identifier, attributes);
-			//addObject(tag_identifier, object);
-			tag_identifier = "";
+      tag_object tag = {tag_identifier, object};
+      tag_identifier = "";
 			attributes.clear();
 			found_tag_identifier = false;
+      return tag;
 		}
 	}
 }
