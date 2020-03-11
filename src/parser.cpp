@@ -53,8 +53,11 @@ tag_object readTag(std::string tag){
 
 		if(c == '>'){
 			//AQUI CHAMAMOS A FUNÇÃO CREATE OBJECT passando tag_identifier e attributes
-			void * object = createObject(tag_identifier, attributes);
-      tag_object tag = {tag_identifier, object};
+      
+      // tag_object tag = {tag_identifier, createObject(tag_identifier, attributes)};
+      std::cout<< "bbb"  << createObject(tag_identifier, attributes) << std::endl;
+      void * obj;
+			tag_object tag = {tag_identifier, obj};
       tag_identifier = "";
 			attributes.clear();
 			found_tag_identifier = false;
