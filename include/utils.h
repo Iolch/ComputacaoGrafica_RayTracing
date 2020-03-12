@@ -1,3 +1,6 @@
+#ifndef UTILSH
+#define UTILSH
+
 #include <string.h>
 #include <map>
 #include <string>
@@ -14,9 +17,11 @@ std::map<int, std::string> split(std::string str, char comma){
       temporary = "";
       index += 1;
     }else{
-      if(*it != '<' and *it != '>' and *it != '"' and *it != ' ') temporary += *it;
+      if(*it != '<' and *it != '>' and *it != '"') temporary += *it;
       else continue;
     }
   } 
   return words;
 }
+
+#endif

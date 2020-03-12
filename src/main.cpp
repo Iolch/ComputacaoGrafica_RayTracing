@@ -6,6 +6,7 @@
 #include "background.cpp"
 #include "parser.cpp"
 
+
 int main(int argc, char** argv){
 	int w = 200;
 	int h = 100;

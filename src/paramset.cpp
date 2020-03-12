@@ -6,10 +6,12 @@ std::unique_ptr<void *> createObject(std::string tag_identifier, std::map<std::s
     if(tag_identifier == "film") {
         Film f {attributes};
         object = &f;     
+        std::cout << (static_cast<Film *>(&f))->getWidth()<<std::endl;
     }else
     if(tag_identifier == "background"){
     	Background b {attributes};
     	object = &b;
+        std::cout << (static_cast<Background *>(&b))->getColor()<<std::endl;
     }	
 
     std::unique_ptr<void*> result( new void *);

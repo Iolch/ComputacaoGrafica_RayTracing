@@ -1,5 +1,4 @@
 #include "../include/parser.h"
-
 #include "paramset.cpp"
 
 std::map<std::string, std::unique_ptr<void *>> readXML(std::string file_path){
@@ -13,24 +12,24 @@ std::map<std::string, std::unique_ptr<void *>> readXML(std::string file_path){
   }
   return objects;
 }
-std::map<int, std::string> split(std::string str, char comma){
-  int index = 0;
-  std::map<int, std::string> words;
-  std::string temporary;
+// std::map<int, std::string> split(std::string str, char comma){
+//   int index = 0;
+//   std::map<int, std::string> words;
+//   std::string temporary;
 
-  for ( std::string::iterator it=str.begin(); it<=str.end(); ++it){
+//   for ( std::string::iterator it=str.begin(); it<=str.end(); ++it){
     
-    if(*it == comma || it == str.end()){
-      words[index] = temporary;
-      temporary = "";
-      index += 1;
-    }else{
-      if(*it != '<' and *it != '>' and *it != '"' and *it != ' ') temporary += *it;
-      else continue;
-    }
-  } 
-  return words;
-}
+//     if(*it == comma || it == str.end()){
+//       words[index] = temporary;
+//       temporary = "";
+//       index += 1;
+//     }else{
+//       if(*it != '<' and *it != '>' and *it != '"' and *it != ' ') temporary += *it;
+//       else continue;
+//     }
+//   } 
+//   return words;
+// }
 tag_object readTag(std::string tag){
 
     std::map<int, std::string> elements = split(tag, ' ');
