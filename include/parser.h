@@ -7,7 +7,6 @@
 #include <fstream>
 #include <string>
 #include <memory>
-#include "../src/paramset.cpp"
 
 struct tag_object {
   std::string tag_identifier;

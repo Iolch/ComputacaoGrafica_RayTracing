@@ -1,5 +1,6 @@
 #include "../include/parser.h"
 
+#include "paramset.cpp"
 
 std::map<std::string, std::unique_ptr<void *>> readXML(std::string file_path){
 	std::ifstream file(file_path);
@@ -51,8 +52,8 @@ tag_object readTag(std::string tag){
     tag_obj.tag_identifier = tag_identifier;  //SALVAMOS A KEY COMO A TAGNAME
     tag_obj.object = std::move(createObject(tag_identifier, attributes)); //RECEBE OBJETO E ARMAZENA EM TAG.OBJECT
     
-    std::cout << "DENTRO DA READTAG " << *tag_obj.object << std::endl; 
-    std::cout << (static_cast<film *>(*tag_obj.object))->getWidth() <<std::endl;  //O OBJETO TÁ BUGANDO A FUNCAO, MAS A REFERENCIA ESTA CORRETA
+    //std::cout << "DENTRO DA READTAG " << *tag_obj.object << std::endl; 
+    //std::cout << (static_cast<Film *>(*tag_obj.object))->getWidth() <<std::endl;  //O OBJETO TÁ BUGANDO A FUNCAO, MAS A REFERENCIA ESTA CORRETA
       
     return tag_obj;
 }

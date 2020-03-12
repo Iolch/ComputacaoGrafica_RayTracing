@@ -1,8 +1,16 @@
-background::background(std::map<std::string, std::string> attributes){
+#include "../include/background.h"
+
+Background::Background(std::map<std::string, std::string> attributes){
     type = attributes["type"];
     color = attributes["color"];
     mapping = attributes["mapping"];
 }   
+std::string Background::getType() const {return type;}
+std::string Background::getColor() const {return color;}
+std::string Background::getMapping() const {return mapping;}
+// rgb background::sample(float i, float j){
+// 	std::map<int, std::string> c = split(getColor(), ' ');
+// }
 // void createFilm(std::map<std::string, std::string> attributes){
 	
 // 	std::string teste = attributes["filename"];

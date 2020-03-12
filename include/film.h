@@ -3,14 +3,14 @@
 
 #include <map>
 #include <string>
-class film{
+class Film{
     private:    
         int width;
         int height;
         std::string filename;
         std::string img_type;
     public:
-        film(std::map<std::string, std::string> attributes);
+        Film(std::map<std::string, std::string>);
         int getWidth() const;
         int getHeight() const;
         std::string getFilename() const;

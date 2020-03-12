@@ -3,6 +3,7 @@
 
 #include "../include/vec3.h"
 #include "film.cpp"
+#include "background.cpp"
 #include "parser.cpp"
 
 int main(int argc, char** argv){
@@ -15,7 +16,7 @@ int main(int argc, char** argv){
 		return -1;
 	}
 	std::map<std::string, std::unique_ptr<void *>> objects = readXML(xmlpath);
-	film * f = static_cast<film *>(*objects["film"]);
+	Film * f = static_cast<Film *>(*objects["film"]);
 
 	
     std::cout << "DENTRO DA MAIN " << f << std::endl; 

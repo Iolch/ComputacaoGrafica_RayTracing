@@ -1,1 +1,2 @@
 <film type="image" x_res="200" y_res="100" filename="build/simple_bkg.ppm" img_type="ppm" />
+<background type="colors" color="153 204 255"/>

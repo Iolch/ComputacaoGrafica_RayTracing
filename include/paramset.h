@@ -5,7 +5,6 @@
 #include <fstream>
 #include <string>
 #include <memory>
-#include "../src/film.cpp"
 
 class paramset{
     public:
