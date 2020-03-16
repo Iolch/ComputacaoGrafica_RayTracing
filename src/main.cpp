@@ -50,7 +50,9 @@ int main(int argc, char** argv){
 		
 		for(int j =  height-1; j>=0; j--){
 			for(int i=0; i<width; i++){
-				rgb color = b.sample(float(i)/float(width), float(j)/float(height));
+				float normalized_i = float(i)/float(width);
+				float normalized_j = float(j)/float(height);
+				rgb color = b.sample(normalized_i, normalized_j);
 				f.addPoint(i, j, color);
 			}
 		}
