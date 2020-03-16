@@ -5,7 +5,7 @@
 #include "film.cpp"
 #include "background.cpp"
 #include "parser.cpp"
-
+// #include "paramset.cpp"
 
 int main(int argc, char** argv){
 	int w = 200;
@@ -16,14 +16,16 @@ int main(int argc, char** argv){
 		std::cout << "Por favor, informe o caminho de um arquivo xml";
 		return -1;
 	}
-	std::map<std::string, std::unique_ptr<void *>> objects = readXML(xmlpath);
-	Film * f = static_cast<Film *>(*objects["film"]);
-	Background * b = static_cast<Background *>(*objects["background"]);
+	ParamSet paramSet;
+	Parser parser;
 
-	
-    std::cout << "DENTRO DA MAIN " << f << std::endl; 
-	std::cout << f->getWidth() << std::endl;
-	std::cout << b->getColor() << std::endl;
+	parser.readXML(xmlpath, &paramSet);
+	//std::map<std::string, std::unique_ptr<void *>> objects = readXML(xmlpath, &paramSet);
+	std::map<std::string, std::map<std::string, std::string>> objects = paramSet.getObjects();
+	std::cout << objects["film"]["type"] << std::endl;
+	//Film * f = static_cast<Film *>(*objects["film"]);
+	//Background * b = static_cast<Background *>(*objects["background"]);
+
 	
 	// 	std::cout << ">> Creating Film Object" << std::endl;
 	// 	std::cout << "\t >> Saving at file " << f->getFilename() << std::endl;
