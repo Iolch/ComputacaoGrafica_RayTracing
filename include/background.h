@@ -5,11 +5,11 @@
 #include <string>
 #include "utils.h"
 
-struct rgb{
-	int r;
-	int g;
-	int b;
-};
+// struct rgb{
+// 	int r;
+// 	int g;
+// 	int b;
+// };
 class Background{
     private:    
         std::string type;

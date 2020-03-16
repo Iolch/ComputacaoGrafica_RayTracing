@@ -5,10 +5,14 @@ Film::Film(std::map<std::string, std::string> attributes){
 	height = std::stoi(attributes["y_res"]);
 	filename = attributes["filename"];
 }
+void Film::addPoint(int i, int j, rgb color){
+	points[std::make_pair(i,j)] = color;
+}
 int Film::getWidth() const {return width;}
 int Film::getHeight() const {return height;}
 std::string Film::getFilename() const {return filename;}
 std::string Film::getImgType() const {return filename;}
+std::map<std::pair<int,int>, rgb> Film::getPoints() const {return points;}
 
 // void createFilm(std::map<std::string, std::string> attributes){
 
